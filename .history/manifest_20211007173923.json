@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Sediment",
+  "version": "1.0",
+  "description": "An extension that replaces all NSFW images to blanks.",
+  "content_scripts":
+  [
+    {
+      "matches": ["*://*/*"],
+      "js": ["clarifai.js","aes-min.js", "swears.js", "slurs.js", "bundle.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions" : ["tabs", "*://*/*", "storage"],
+  "background" : {
+    "scripts" : ["background.js"],
+    "persistent" : false
+  },
+  "icons": { "16": "Distill_Logo16.png",
+    "48": "Distilled_logo64.png",
+    "128": "Distill_Logo128.png" },
+  "browser_action": {
+    "default_icon": "Distilled_logo64.png"
+  },
+  "applications": {
+    "gecko": {
+    "id": "demo-runtime.connect-and-storage.local@example.com",
+    "strict_min_version": "48.0a1"
+    },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  },
+    "web_accessible_resources": ["Distill.png", "DistillBG.png", "A_Better_Internet.png", "Censors.png"]
+}
